@@ -1,0 +1,84 @@
+////////////////////////////////////////////////
+// VARIABLES
+///////////////////////////////////////////////////
+//COLORS
+:root {
+	--color-primary: #e83822;
+	--color-primary-tint: #e8b4a3;
+	--color-primary-shade: #b99391;
+	--color-primary-shade-2: #a22718;
+  
+	--color-text-primary: #302422;
+	--color-text-secondary: #646060;
+	--color-text-tertiary: #5f6161;
+  
+	--color-white: #fff;
+	--color-black: #000;
+  }
+
+  //BREAKPOINTS
+
+$bp-big-desktop: 112.5em; //1800px
+$bp-laptop: 93.75em; //1500px
+$bp-laptop-small: 85em; //1360px
+$bp-tab-land: 75em; //1200px
+$bp-tab-land-small: 64em; //1024px
+$bp-tab-port-large: 60em; //960px
+$bp-tab-port: 48.125em; //960px
+$bp-phone: 37.5em; //600px
+$bp-phone-small: 31.25em; //500px
+$bp-phone-v-small: 25em; //400px
+
+//MIXINS
+@mixin respond($breakpoint) {
+	@if $breakpoint==laptop {
+	  @media only screen and (max-width: $bp-laptop) {
+		@content;
+	  }
+	}
+	@if $breakpoint==laptop-small {
+	  @media only screen and (max-width: $bp-laptop-small) {
+		@content;
+	  }
+	}
+	@if $breakpoint==tab-land {
+	  @media only screen and (max-width: $bp-tab-land) {
+		@content;
+	  }
+	}
+	@if $breakpoint==tab-land-small {
+	  @media only screen and (max-width: $bp-tab-land-small) {
+		@content;
+	  }
+	}
+	@if $breakpoint==tab-port-large {
+	  @media only screen and (max-width: $bp-tab-port-large) {
+		@content;
+	  }
+	}
+	@if $breakpoint==tab-port {
+	  @media only screen and (max-width: $bp-tab-port) {
+		@content;
+	  }
+	}
+	@if $breakpoint==phone {
+	  @media only screen and (max-width: $bp-phone) {
+		@content;
+	  }
+	}
+	@if $breakpoint==phone-small {
+	  @media only screen and (max-width: $bp-phone-small) {
+		@content;
+	  }
+	}
+	@if $breakpoint==phone-v-small {
+	  @media only screen and (max-width: $bp-phone-v-small) {
+		@content;
+	  }
+	}
+	@if $breakpoint==big-desktop {
+	  @media only screen and (min-width: $bp-big-desktop) {
+		@content;
+	  }
+	}
+  }
