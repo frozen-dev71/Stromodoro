@@ -1,4 +1,4 @@
-
+import classes from './Overview.module.scss';
 import Card from '../UI/Card';
 import { useSelector } from 'react-redux';
 

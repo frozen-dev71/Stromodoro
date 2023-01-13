@@ -1,0 +1,62 @@
+@import '../../styles/abstracts.scss';
+
+.overview {
+  width: 100%;
+  padding: 2.5rem;
+  display: grid;
+  row-gap: 2rem;
+  grid-column: 1 / -1;
+
+  ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 2rem;
+    justify-content: space-between;
+    list-style: none;
+  }
+
+  li {
+    width: 20rem;
+    padding: 2rem;
+    border-radius: 1rem;
+
+    display: grid;
+    justify-items: center;
+    background-color: var(--color-grey-1);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-primary-shade-2);
+
+    @include respond(tab-land) {
+      width: 19rem;
+    }
+    @include respond(tab-port-large) {
+      width: 17rem;
+    }
+    @include respond(phone-v-small) {
+      width: 15rem;
+      padding: 1rem;
+    }
+  }
+
+  &__metric {
+    font-size: 3.2rem;
+    line-height: 1.2;
+    font-weight: 700;
+
+    // @include respond(phone-v-small) {
+    //   font-size: 3.2rem;
+    // }
+  }
+  &__description {
+    display: block;
+    justify-self: center;
+    word-wrap: break-word;
+
+    @include respond(phone-small) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
