@@ -33,3 +33,42 @@ const Labels = React.memo(({ maxValue, unit }) => {
     </Fragment>
   );
 });
+
+const Bar = ({ percentage, label, value }) => {
+	return (
+	  <div
+		className={classes.bar}
+		style={{ '--bar-value': `${percentage}%` }}
+		data-value={value}
+		data-name={label}
+	  ></div>
+	);
+  };
+  
+  const BarChart = ({ maxValue, barsArray, unit, opacity, height }) => {
+	return (
+	  <div
+		className={classes['chart-wrap']}
+		style={{ opacity: `${opacity}`, '--height': height || '20rem' }}
+	  >
+		<div className={classes.grid}>
+		  {barsArray.map((bar, i) => {
+			if (bar) {
+			  return (
+				<Bar
+				  key={i}
+				  percentage={(bar.value / maxValue) * 100}
+				  value={bar.value}
+				  label={bar.label}
+				/>
+			  );
+			} else return <Bar key={i} percentage={0} label="" />;
+		  })}
+		  <Labels maxValue={maxValue} unit={unit} />
+		</div>
+	  </div>
+	);
+  };
+  
+  export default BarChart;
+  
