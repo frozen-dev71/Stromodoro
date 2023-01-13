@@ -71,3 +71,67 @@ const Divisions = React.memo(({ maxValue, unit }) => {
   );
 });
 
+const LineChart = ({ data, maxValue, unit }) => {
+	const [chartWidth, setChartWidth] = useState(null);
+  
+	useEffect(() => {
+	  //Create observer which detects chart rezise - effect runs only when component is mounted
+	  const observer = new ResizeObserver(resizeChartHandler);
+	  observer.observe(document.querySelector(`.${classes.linechart}`));
+  
+	  return () => {
+		observer.disconnect();
+	  };
+	}, []);
+  
+	// handler that is triggered when resize of chart is observed (this changes the state and the component updates)
+	const resizeChartHandler = () => {
+	  const width = document
+		.querySelector(`.${classes.linechart}`)
+		?.getBoundingClientRect().width;
+	  setChartWidth(width);
+	};
+  
+	if (
+	  data.filter(item => item).length !== data.length ||
+	  data.reduce((acc, item) => (item ? acc + item.value : acc + 0), 0) === 0 ||
+	  !data ||
+	  data.length === 0
+	) {
+	  return (
+		<div className={classes.linechart} style={{ opacity: 0.8 }}>
+		  <Divisions maxValue={maxValue} unit={unit} />
+		  <p className={classes.linechart__message}>
+			You have no activity logged in the last 7 days! Get active to track
+			your weekly progress!
+		  </p>
+		</div>
+	  );
+	}
+  
+	return (
+	  <div className={classes.linechart}>
+		<Divisions maxValue={maxValue} unit={unit} />
+		{data.map((item, index) => {
+		  const leftOffset = (chartWidth / data.length) * (index + 1);
+		  const base = chartWidth / data.length;
+		  const hasLine = index + 1 !== data.length;
+		  return (
+			<DataPoint
+			  label={item.label}
+			  key={index}
+			  bottom={item.value}
+			  left={leftOffset}
+			  base={base}
+			  index={index}
+			  hasLine={hasLine}
+			  nextPointValue={hasLine ? data[index + 1].value : 0}
+			/>
+		  );
+		})}
+	  </div>
+	);
+  };
+  
+  export default React.memo(LineChart);
+  
