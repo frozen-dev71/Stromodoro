@@ -1,0 +1,96 @@
+@import '../../styles/abstracts.scss';
+
+$bar-background-color: var(--color-primary);
+
+.chart-wrap {
+  --width: 90%;
+  --height: 20rem;
+  --bar-size: 1.5rem;
+  --bar-rounded: 0.5rem;
+  --grid-color: #aaa;
+  margin-bottom: 3rem;
+  width: var(--width);
+  height: var(--height);
+  font-family: sans-serif;
+
+  @include respond(phone-v-small) {
+    --width: 90%;
+    --bar-size: 1rem;
+  }
+}
+
+.grid {
+  margin: 3.5rem;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-bottom: 2px solid var(--grid-color);
+  border-left: 2px solid var(--grid-color);
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 16%,
+    #ddd 16.66%
+  );
+
+  .bar {
+    background-color: var(--color-primary);
+    width: var(--bar-size);
+    height: var(--bar-value);
+    align-self: flex-end;
+    margin: 0 auto;
+    border-radius: var(--bar-rounded) var(--bar-rounded) 0 0;
+    position: relative;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: var(--color-primary-shade-2);
+
+      &:before {
+        opacity: 1;
+      }
+    }
+
+    &::after {
+      content: attr(data-name);
+      bottom: -2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--color-text-secondary);
+      font-size: 1rem;
+      display: inline-block;
+      white-space: nowrap;
+      position: absolute;
+    }
+
+    &::before {
+      opacity: 0;
+      content: attr(data-value);
+      position: absolute;
+      top: -2rem;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 0.4rem;
+      transition: all 0.2s;
+      left: 50%;
+      transform: translateX(-50%);
+
+      @include respond(phone) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .y-label {
+    position: absolute;
+    bottom: var(--label-position);
+    color: var(--color-text-secondary);
+    left: -4rem;
+    margin-bottom: -1rem;
+    font-size: 1rem;
+  }
+}

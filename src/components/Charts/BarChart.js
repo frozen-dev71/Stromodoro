@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-
+import classes from './BarChart.module.scss';
 
 const findLabels = (distanceBetweenLabels, maxValue) => {
 
