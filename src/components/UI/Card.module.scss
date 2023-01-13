@@ -1,0 +1,9 @@
+@import '../../styles/abstracts.scss';
+
+.card {
+	padding: 2rem 2rem;
+	background-color: var(--color-background);
+	border-radius: 2rem;
+	box-shadow: 0 0.2rem 1rem rgba(#000, 0.1);
+  }
+  
