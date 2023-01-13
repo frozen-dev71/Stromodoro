@@ -1,5 +1,5 @@
 import React, { useState, Fragment, useEffect } from 'react';
-
+import classes from './LineChart.module.scss';
 
 /* Secondary component for the chart, returns a dot and a corresponding line
 and performs calculations to find out the length and the angle of the line*/
