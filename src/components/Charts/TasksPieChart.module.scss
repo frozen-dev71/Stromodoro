@@ -1,0 +1,34 @@
+@import '../../styles/abstracts.scss';
+
+.pie {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.3s;
+
+  @include respond(phone-v-small) {
+    width: 18rem;
+    height: 18rem;
+  }
+}
+
+.legend {
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.2s;
+
+    &:hover {
+      font-weight: 600;
+    }
+  }
+
+  div {
+    width: 2rem;
+    height: 2rem;
+  }
+}

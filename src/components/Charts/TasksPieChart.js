@@ -1,4 +1,4 @@
-
+import classes from './TasksPieChart.module.scss';
 import { getVariableFromRoot } from '../../helpers/helpers';
 import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
