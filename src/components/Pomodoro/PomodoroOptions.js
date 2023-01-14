@@ -58,7 +58,29 @@ const PomodoroOptions = () => {
     activeTimer === 'longBR' ? activeClasses : defaultClass;
 
   return (
-   
+    <React.Fragment>
+      {confirmModalIsActive && (
+        <ConfirmAction
+          onClose={closeConfirmationHandler}
+          onConfirm={confirmActionHandler}
+        >
+          {activeTimer === 'pomodoro'
+            ? "Current timer progress will be lost and your pomodoro won't be marked as completed!"
+            : 'Current timer progress will be lost!'}
+        </ConfirmAction>
+      )}
+      <ul className={classes.options} onClick={changeTimerHandler}>
+        <li className={pomodoroClasses} data-timer="pomodoro">
+          pomodoro
+        </li>
+        <li className={shortBreakClasses} data-timer="shortBR">
+          short break
+        </li>
+        <li className={longBreakClasses} data-timer="longBR">
+          long break
+        </li>
+      </ul>
+    </React.Fragment>
   );
 };
 
