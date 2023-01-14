@@ -1,4 +1,4 @@
-
+import classes from './PomodoroTimer.module.scss';
 import '../../styles/abstracts.scss';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
