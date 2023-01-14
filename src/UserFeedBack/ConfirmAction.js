@@ -1,5 +1,5 @@
 import Modal from '../UI/Modal';
-
+import classes from './ConfirmAction.module.scss';
 
 const ConfirmAction = props => {
   return (
