@@ -53,7 +53,46 @@ const PomodoroTimer = () => {
   }, [countdown, totalSeconds]);
 
   return (
-   
+    <div className={`${classes.timer} ${wasClicked ? 'clicked' : ''}`}>
+      <div className={classes.timer__circular}>
+        <svg
+          className={classes['circle-container']}
+          viewBox="2 -2 28 36"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            className={classes['circle-container__background']}
+            r="16"
+            cx="16"
+            cy="16"
+          ></circle>
+          <circle
+            className={classes['circle-container__progress']}
+            r="16"
+            cx="16"
+            cy="16"
+            style={{ strokeDashoffset: percentage }}
+          ></circle>
+        </svg>
+        <div className={classes.timer__center}>
+          <div className={classes.timer__countdown}>
+            <span className={classes.timer__min}>{countdown.minutes}</span>:
+            <span className={classes.timer__sec}>
+              {countdown.seconds < 10
+                ? `0${countdown.seconds}`
+                : countdown.seconds}
+            </span>
+          </div>
+          <button
+            className={classes.timer__btn}
+            onClick={clickTimerHandler}
+            disabled={countdown.minutes === 0 && countdown.seconds === 0}
+          >
+            {isActive ? 'Pause' : 'Start'}
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 
