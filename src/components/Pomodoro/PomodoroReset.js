@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-
+import classes from './PomodoroReset.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import ConfirmAction from '../UserFeedback/ConfirmAction';
