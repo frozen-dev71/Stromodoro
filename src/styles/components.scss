@@ -1,0 +1,47 @@
+.btn {
+	@include default-button-reset;
+	background-color: var(--color-primary);
+	color: var(--color-white);
+	font-size: 1.8rem;
+	font-weight: 600;
+	font-family: inherit;
+	border-radius: 10rem;
+	padding: 1.25rem 4rem;
+  }
+  
+  .btn-link {
+	&,
+	&:link,
+	&:visited {
+	  display: block;
+	  text-decoration: none;
+	  width: fit-content;
+	  white-space: nowrap;
+	  justify-self: end;
+	  font-family: inherit;
+	  font-size: 1.4rem;
+	  padding: 0.6rem 2.2rem;
+	  border-radius: 10rem;
+	  text-transform: capitalize;
+	  outline: none;
+	  cursor: pointer;
+	  background-color: transparent;
+	  border: 2px solid var(--color-grey-4);
+	  color: var(--color-grey-4);
+	  font-weight: 600;
+	  transition: all 0.2s ease-out;
+  
+	  @include respond(phone) {
+		padding: 0.4rem 1.2rem;
+	  }
+	}
+	&:hover {
+	  background-color: var(--color-grey-1);
+	  color: var(--color-text-secondary);
+	}
+  }
+  
+  input[type='number']::-webkit-inner-spin-button {
+	opacity: 1;
+  }
+  
