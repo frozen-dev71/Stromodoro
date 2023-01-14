@@ -44,7 +44,21 @@ const PomodoroReset = () => {
     setConfirmModalIsActive(false);
   };
   return (
-
+    <Fragment>
+      {confirmModalIsActive && (
+        <ConfirmAction
+          onClose={cancelConfirmationHandler}
+          onConfirm={resetPomodoroHandler}
+        >
+          {activeTimer === 'pomodoro'
+            ? "Current timer progress will be lost and your pomodoro won't be marked as completed!"
+            : 'Current timer progress will be lost!'}
+        </ConfirmAction>
+      )}
+      <button onClick={confirmResetHandler} className={classes.reset}>
+        Reset timer
+      </button>
+    </Fragment>
   );
 };
 
