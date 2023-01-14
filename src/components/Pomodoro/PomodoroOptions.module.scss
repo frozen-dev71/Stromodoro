@@ -1,0 +1,66 @@
+@import '../../styles/abstracts.scss';
+
+.options {
+  list-style: none;
+  display: flex;
+  padding: 1rem;
+  background-color: var(--color-background);
+  border-radius: 10rem;
+  box-shadow: 0.5rem 0.5rem 2rem rgba(#000, 0.15);
+
+  @include respond(phone-v-small) {
+    width: 100%;
+    justify-content: space-between;
+  }
+  @media only screen and (max-width: 21.87em) {
+    width: 100%;
+  }
+}
+
+.option {
+  padding: 1.25rem 3.5rem;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 10rem;
+  transition: all 0.3s;
+  white-space: nowrap;
+  font-size: 1.6rem;
+
+  @include respond(laptop) {
+    padding: 1rem 3rem;
+  }
+  @include respond(tab-land) {
+    padding: 1rem 2rem;
+  }
+  @include respond(tab-land-small) {
+    padding: 1rem 1.5rem;
+  }
+  @include respond(tab-port-large) {
+    padding: 1.25rem 3.5rem;
+  }
+  @include respond(tab-port) {
+    padding: 1.25rem 3rem;
+  }
+  @include respond(phone) {
+    padding: 1rem 2.6rem;
+  }
+  @include respond(phone) {
+    padding: 1rem 2rem;
+  }
+  @include respond(phone-v-small) {
+    padding: 1rem 1.8rem;
+  }
+  @media only screen and (max-width: 21.87em) {
+    font-size: 1.4rem;
+    padding: 1rem 1.6rem;
+  }
+
+  &--active {
+    background-color: var(--color-primary);
+  }
+
+  &:hover:not(.option--active) {
+    color: var(--color-primary);
+  }
+}
