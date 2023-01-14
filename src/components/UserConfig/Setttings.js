@@ -29,7 +29,45 @@ const Settings = props => {
   };
 
   return (
-
+    <Modal onClose={props.onClose} className={classes.settings}>
+      <h2>Settings</h2>
+      <form className={classes.form} onSubmit={applySettingsHandler}>
+        <h3>Time (minutes)</h3>
+        <div className={classes.form__group}>
+          <label htmlFor="pomodoro">pomodoro</label>
+          <input
+            ref={pomodoroInputRef}
+            type="number"
+            min={1}
+            id="pomodoro"
+            placeholder="25"
+          />
+        </div>
+        <div className={classes.form__group}>
+          <label htmlFor="shortBreak">short break</label>
+          <input
+            ref={shortBreakInputRef}
+            type="number"
+            min={1}
+            id="shortBreak"
+            placeholder="5"
+          />
+        </div>
+        <div className={classes.form__group}>
+          <label htmlFor="longBreak">long break</label>
+          <input
+            ref={longBreakInputRef}
+            type="number"
+            min={1}
+            id="longBreak"
+            placeholder="10"
+          />
+        </div>
+        <button type="submit" className="btn">
+          Apply
+        </button>
+      </form>
+    </Modal>
   );
 };
 
