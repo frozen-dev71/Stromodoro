@@ -1,5 +1,5 @@
 import Modal from '../UI/Modal';
-
+import classes from './Settings.module.scss';
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { timerActions } from '../../store/timer';
