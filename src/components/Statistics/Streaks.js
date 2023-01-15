@@ -22,7 +22,7 @@ const formatSquares = (length, type) => {
   }
   return squares;
 };
-console.log(formatSquares(-1, "omitted"));
+// console.log(formatSquares(-1, "omitted"));
 
 const Streaks = () => {
   const calendar = useSelector((state) => state.calendar.calendar);
@@ -41,7 +41,7 @@ const Streaks = () => {
 
   const firstWeekdayOfMonth =
     new Date(streaksYear, streaksMonth, 1).getDay() - 1;
-  console.log(firstWeekdayOfMonth);
+  // console.log(firstWeekdayOfMonth);
 
   const emptySquares = formatSquares(firstWeekdayOfMonth, "omitted");
 
@@ -63,7 +63,7 @@ const Streaks = () => {
   };
   const showNextMonthHandler = () => {
     const newMonth = streaksMonth + 1;
-    console.log(currentMonth, streaksMonth);
+    // console.log(currentMonth, streaksMonth);
 
     if (newMonth > currentMonth && streaksYear === currentYear) return;
     if (newMonth <= 11) setStreaksMonth(newMonth);

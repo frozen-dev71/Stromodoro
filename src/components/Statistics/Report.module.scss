@@ -1,0 +1,48 @@
+@import '../../styles/abstracts.scss';
+
+.report {
+  grid-column: 3 / 4;
+
+  @include respond(tab-port-large) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  @include respond(tab-port) {
+    grid-column: 1 / -1;
+    grid-row: 4 / 5;
+  }
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    color: var(--color-text-primary);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 1.75rem;
+    font-size: 2rem;
+  }
+
+  &__table {
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr;
+    grid-template-rows: repeat(4, 4.3rem);
+    margin: 0 1rem;
+  }
+  &__table-row {
+    &-label {
+      font-size: 1.6rem;
+      font-weight: 600;
+      justify-self: left;
+      color: var(--color-text-primary);
+    }
+    &-value {
+      font-size: 2rem;
+      font-weight: 700;
+      justify-self: center;
+      color: var(--color-primary-tint);
+    }
+  }
+}

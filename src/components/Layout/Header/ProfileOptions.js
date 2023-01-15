@@ -16,7 +16,7 @@ const ProfileOptions = () => {
   return (
     <ul className={classes.profile_options}>
       <li className={classes.option}>
-        <button className={classes.option__btn}>
+        <button className={classes.option__btn} onClick={openSettingsModal}>
           <svg>
             <use href={`${icons}#icon-cog`}></use>
           </svg>

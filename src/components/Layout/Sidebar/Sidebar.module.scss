@@ -22,7 +22,7 @@
   @include respond(phone) {
     position: fixed;
     z-index: 500;
-    background-color: var(--color-white);
+    background-color: var(--color-background);
     height: 8rem;
     width: 100%;
     padding: 0.5rem 6rem;

@@ -26,7 +26,7 @@
     background-color: var(--color-grey-1);
     font-size: 1.8rem;
     font-weight: 600;
-    color: var(--color-primary-shade-2);
+    color: var(--color-text-primary);
 
     @include respond(tab-land) {
       width: 19rem;

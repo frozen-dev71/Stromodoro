@@ -2,7 +2,7 @@
 
 .task {
   padding: 1.2rem 1.5rem;
-  background-color: var(--color-grey-2);
+  background-color: var(--color-text-tertiary);
 
   display: grid;
   grid-template-columns: min-content 1fr 3rem;
@@ -62,7 +62,7 @@
     line-height: normal;
   }
   &__category {
-    color: var(--color-primary);
+    color: var(--color-primary-tint);
     font-size: 1.4rem;
     font-weight: 600;
   }

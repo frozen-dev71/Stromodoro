@@ -59,7 +59,7 @@ $bar-background-color: var(--color-primary);
       bottom: -2rem;
       left: 50%;
       transform: translateX(-50%);
-      color: var(--color-text-secondary);
+      color: var(--color-text-primary);
       font-size: 1rem;
       display: inline-block;
       white-space: nowrap;
@@ -88,7 +88,7 @@ $bar-background-color: var(--color-primary);
   .y-label {
     position: absolute;
     bottom: var(--label-position);
-    color: var(--color-text-secondary);
+    color: var(--color-text-primary);
     left: -4rem;
     margin-bottom: -1rem;
     font-size: 1rem;
