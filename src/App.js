@@ -115,6 +115,33 @@ function App() {
 
 
 
+  useEffect(() => {
+    if (document.visibilityState === 'hidden' && timerIsActive) {
+      dispatch(timerActions.toggleIsActive());
+      localStorage.setItem('startOfInactive', JSON.stringify(Date.now()));
+    }
+    if (
+      document.visibilityState === 'visible' &&
+      localStorage.getItem('startOfInactive')
+    ) {
+      const storedTimestamp = JSON.parse(
+        localStorage.getItem('startOfInactive')
+      );
+      const secondsPassed = Math.trunc((Date.now() - storedTimestamp) / 1000);
+
+      if (dateIsToday(storedTimestamp)) {
+        dispatch(timerActions.toggleIsActive());
+        dispatch(
+          timerActions.subtractOutsideSeconds(
+            secondsPassed + secondsOutsidePomodoro
+          )
+        );
+        secondsOutsidePomodoro = 0;
+      }
+      localStorage.removeItem('startOfInactive');
+    }
+  }, [pageVisibility, dispatch, timerIsActive]);
+
 
   return (
     <Layout>
