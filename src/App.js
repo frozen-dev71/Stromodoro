@@ -83,11 +83,37 @@ function App() {
     }
   }, [pomodoroWasCompleted, dispatch, pomodoroMinutes]);
 
+
+  useEffect(() => {
+    if (!timerIsActive) return;
+    if (!match) {
+      const remainingSeconds = countdown.minutes * 60 + countdown.seconds;
+      const interval = setInterval(() => {
+        secondsOutsidePomodoro++;
+        if (secondsOutsidePomodoro > remainingSeconds) {
+          audio.play();
+          audioPlayedOutside = true;
+          clearInterval(interval);
+        }
+      }, 1000);
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+    if (match && secondsOutsidePomodoro > 0) {
+      dispatch(timerActions.subtractOutsideSeconds(secondsOutsidePomodoro));
+      secondsOutsidePomodoro = 0;
+    }
+  }, [match, timerIsActive, dispatch, countdown]);
+
   useEffect(() => {
     const remainingSeconds = countdown.minutes * 60 + countdown.seconds;
     if (remainingSeconds > 0) audioPlayedOutside = false;
     if (remainingSeconds === 0 && !audioPlayedOutside) audio.play();
   }, [countdown]);
+
+
 
 
   return (
