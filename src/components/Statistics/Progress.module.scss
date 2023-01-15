@@ -1,0 +1,14 @@
+@import '../../styles/abstracts.scss';
+
+.progress {
+  grid-column: 1 / 3;
+
+  @include respond(tab-port-large) {
+    grid-column: 1 / -1;
+  }
+
+  &__chart {
+    height: 90%;
+    padding: 2rem 3rem;
+  }
+}
