@@ -77,6 +77,7 @@ function App() {
       <Route path="/pomodoro" element={<PomodoroPage />} />
       <Route path="/tasks" element={<TasksPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
+      <Route path="/statistics" element={<StatisticsPage />} />
     </Routes>
   </Layout>
   );
