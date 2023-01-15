@@ -142,6 +142,16 @@ function App() {
     }
   }, [pageVisibility, dispatch, timerIsActive]);
 
+  usePageVisibilty(() => {
+    setPageVisibility(document.visibilityState);
+  });
+
+  useUnload(event => {
+    event.preventDefault();
+    dispatch(timerActions.subtractOutsideSeconds(secondsOutsidePomodoro));
+    secondsOutsidePomodoro = 0;
+  });
+
 
   return (
     <Layout>
