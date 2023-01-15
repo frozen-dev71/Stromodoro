@@ -70,6 +70,26 @@ function App() {
     }
   }, [dispatch]);
 
+  useEffect(() => {
+    if (pomodoroWasCompleted) {
+      dispatch(activityActions.addCompletedPomodoro());
+      dispatch(
+        activityActions.saveMinutesWhenPomodoroPaused({
+          totalSeconds: pomodoroMinutes * 60,
+          countdown: { minutes: 0, seconds: 0 },
+          reinitMinutesPassed: true,
+        })
+      );
+    }
+  }, [pomodoroWasCompleted, dispatch, pomodoroMinutes]);
+
+  useEffect(() => {
+    const remainingSeconds = countdown.minutes * 60 + countdown.seconds;
+    if (remainingSeconds > 0) audioPlayedOutside = false;
+    if (remainingSeconds === 0 && !audioPlayedOutside) audio.play();
+  }, [countdown]);
+
+
   return (
     <Layout>
     <Routes>
