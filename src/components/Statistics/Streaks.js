@@ -1,31 +1,31 @@
-import { useSelector } from 'react-redux';
-import icons from '../../assets/icons.svg';
-import Card from '../UI/Card';
-import classes from './Streaks.module.scss';
-import { numDaysInMonths } from '../../helpers/config';
-import { useState } from 'react';
+import { useSelector } from "react-redux";
+import icons from "../../assets/icons.svg";
+import Card from "../UI/Card";
+import classes from "./Streaks.module.scss";
+import { numDaysInMonths } from "../../helpers/config";
+import { useState } from "react";
 
 const formatSquares = (length, type) => {
   if (length === -1) length = 6;
   const squares = [];
   while (length) {
-    if (type === 'omitted')
+    if (type === "omitted")
       squares.push(
         <div
-          className={`${classes['streak']} ${classes['streak--omitted']}`}
+          className={`${classes["streak"]} ${classes["streak--omitted"]}`}
           key={`omitted__${length}`}
         ></div>
       );
-    if (type === 'future') squares.push(undefined);
+    if (type === "future") squares.push(undefined);
 
     length--;
   }
   return squares;
 };
-console.log(formatSquares(-1, 'omitted'));
+console.log(formatSquares(-1, "omitted"));
 
 const Streaks = () => {
-  const calendar = useSelector(state => state.calendar.calendar);
+  const calendar = useSelector((state) => state.calendar.calendar);
   const currentMonth = new Date().getMonth();
   const currentYear = new Date().getFullYear();
 
@@ -33,9 +33,9 @@ const Streaks = () => {
   const [streaksYear, setStreaksYear] = useState(currentYear);
 
   const monthString = new Date(streaksYear, streaksMonth, 1).toLocaleString(
-    'en-US',
+    "en-US",
     {
-      month: 'long',
+      month: "long",
     }
   );
 
@@ -43,13 +43,13 @@ const Streaks = () => {
     new Date(streaksYear, streaksMonth, 1).getDay() - 1;
   console.log(firstWeekdayOfMonth);
 
-  const emptySquares = formatSquares(firstWeekdayOfMonth, 'omitted');
+  const emptySquares = formatSquares(firstWeekdayOfMonth, "omitted");
 
   const numDaysInStreaksMonth = numDaysInMonths[streaksMonth];
 
   const streaksMonthData = calendar[streaksMonth];
   const numOfFutureDays = numDaysInStreaksMonth - streaksMonthData.length;
-  const futureSquares = formatSquares(numOfFutureDays, 'future');
+  const futureSquares = formatSquares(numOfFutureDays, "future");
   const monthArray = [...streaksMonthData, ...futureSquares];
 
   // HANDLERS FOR CHANGING STREAKS MONTH AND YEAR
@@ -58,7 +58,7 @@ const Streaks = () => {
     if (newMonth >= 0) setStreaksMonth(newMonth);
     else if (newMonth < 0) {
       setStreaksMonth(11);
-      setStreaksYear(prev => prev - 1);
+      setStreaksYear((prev) => prev - 1);
     }
   };
   const showNextMonthHandler = () => {
@@ -69,7 +69,7 @@ const Streaks = () => {
     if (newMonth <= 11) setStreaksMonth(newMonth);
     if (newMonth > 11) {
       setStreaksMonth(0);
-      setStreaksYear(prev => prev + 1);
+      setStreaksYear((prev) => prev + 1);
     }
   };
 
@@ -92,7 +92,7 @@ const Streaks = () => {
       <h4>{`${monthString} ${streaksYear}`}</h4>
       <div className={classes.streaks__chart}>
         <div className={classes.streaks__grid}>
-          {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(day => (
+          {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((day) => (
             <div key={day} className={classes.day}>
               {day}
             </div>
@@ -101,14 +101,14 @@ const Streaks = () => {
           {monthArray.map((day, index) => (
             <div
               key={index}
-              className={`${classes['streak']} ${
-                day ? classes['streak--checked'] : ''
+              className={`${classes["streak"]} ${
+                day ? classes["streak--checked"] : ""
               }`}
             ></div>
           ))}
           {showBackButton && (
             <button
-              className={`${classes.arrow} ${classes['arrow--left']}`}
+              className={`${classes.arrow} ${classes["arrow--left"]}`}
               onClick={showPastMonthHandler}
             >
               <svg>
@@ -118,7 +118,7 @@ const Streaks = () => {
           )}
           {showNextButton && (
             <button
-              className={`${classes.arrow} ${classes['arrow--right']}`}
+              className={`${classes.arrow} ${classes["arrow--right"]}`}
               onClick={showNextMonthHandler}
             >
               <svg>

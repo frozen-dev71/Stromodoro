@@ -1,16 +1,16 @@
-import classes from './ProductiveHours.module.scss';
-import Card from '../UI/Card';
-import BarChart from '../Charts/BarChart';
-import { useSelector } from 'react-redux';
+import classes from "./ProductiveHours.module.scss";
+import Card from "../UI/Card";
+import BarChart from "../Charts/BarChart";
+import { useSelector } from "react-redux";
 
 const ProductiveHours = () => {
-  const hours = useSelector(state => state.activity.hours);
+  const hours = useSelector((state) => state.activity.hours);
   const activityMinutes = hours.reduce(
     (acc, hour) => acc + hour.activeMinutes,
     0
   );
 
-  const chartData = hours.map(hour => ({
+  const chartData = hours.map((hour) => ({
     label: hour.hour,
     value: hour.activeMinutes,
   }));

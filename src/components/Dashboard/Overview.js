@@ -1,6 +1,6 @@
-import classes from './Overview.module.scss';
-import Card from '../UI/Card';
-import { useSelector } from 'react-redux';
+import classes from "./Overview.module.scss";
+import Card from "../UI/Card";
+import { useSelector } from "react-redux";
 
 const OverviewCard = ({ metric, label }) => {
   return (
@@ -12,15 +12,15 @@ const OverviewCard = ({ metric, label }) => {
 };
 
 const Overview = () => {
-  const tasks = useSelector(state => state.tasks.tasks);
+  const tasks = useSelector((state) => state.tasks.tasks);
   const numTasksDoneToday = useSelector(
-    state => state.activity.numberOfCompletedTasks
+    (state) => state.activity.numberOfCompletedTasks
   );
-  const hours = useSelector(state => state.activity.hours);
+  const hours = useSelector((state) => state.activity.hours);
   const numPomodoros = useSelector(
-    state => state.activity.numberOfCompletedPomodoros
+    (state) => state.activity.numberOfCompletedPomodoros
   );
-  const numOfActiveTasks = tasks.filter(task => !task.completed).length;
+  const numOfActiveTasks = tasks.filter((task) => !task.completed).length;
 
   const activityMinutes = hours.reduce(
     (acc, hour) => acc + hour.activeMinutes,
@@ -37,15 +37,15 @@ const Overview = () => {
       <ul>
         <OverviewCard
           metric={numOfActiveTasks}
-          label={`active ${numOfActiveTasks === 1 ? 'task' : 'tasks'}`}
+          label={`active ${numOfActiveTasks === 1 ? "task" : "tasks"}`}
         />
         <OverviewCard
           metric={numTasksDoneToday}
-          label={`${numTasksDoneToday === 1 ? 'task' : 'tasks'} done`}
+          label={`${numTasksDoneToday === 1 ? "task" : "tasks"} done`}
         />
         <OverviewCard
           metric={numPomodoros}
-          label={`${numPomodoros === 1 ? 'pomodoro' : 'pomodoros'}`}
+          label={`${numPomodoros === 1 ? "pomodoro" : "pomodoros"}`}
         />
         <OverviewCard metric={activeTime} label="of activity" />
       </ul>

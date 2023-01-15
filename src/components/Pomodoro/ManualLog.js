@@ -1,9 +1,9 @@
-import Card from '../UI/Card';
-import ConfirmAction from '../UserFeedback/ConfirmAction';
-import classes from './ManualLog.module.scss';
-import { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { activityActions } from '../../store/activity';
+import Card from "../UI/Card";
+import ConfirmAction from "../UserFeedback/ConfirmAction";
+import classes from "./ManualLog.module.scss";
+import { useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { activityActions } from "../../store/activity";
 
 const ManualLog = () => {
   const dispatch = useDispatch();
@@ -11,9 +11,9 @@ const ManualLog = () => {
   const activeMinutesRef = useRef();
   const [error, setError] = useState(null);
   const [confirmationData, setConfirmationData] = useState(null);
-  const timerIsActive = useSelector(state => state.timer.isActive);
+  const timerIsActive = useSelector((state) => state.timer.isActive);
 
-  const submitTimeHandler = event => {
+  const submitTimeHandler = (event) => {
     event.preventDefault();
 
     setError(null);
@@ -70,16 +70,16 @@ const ManualLog = () => {
       return;
     }
 
-    startingHourRef.current.value = '';
-    activeMinutesRef.current.value = '';
+    startingHourRef.current.value = "";
+    activeMinutesRef.current.value = "";
   };
 
   const confirmHandler = () => {
     const { savedData } = confirmationData;
     dispatch(activityActions.addActiveTime(savedData));
     setConfirmationData(null);
-    startingHourRef.current.value = '';
-    activeMinutesRef.current.value = '';
+    startingHourRef.current.value = "";
+    activeMinutesRef.current.value = "";
   };
 
   const abortConfirmHandler = () => {
@@ -93,7 +93,7 @@ const ManualLog = () => {
           {confirmationData.warning}
         </ConfirmAction>
       ) : (
-        ''
+        ""
       )}
       <h3>Log productive time manually</h3>
       <form className={classes.form} onSubmit={submitTimeHandler}>
@@ -121,7 +121,7 @@ const ManualLog = () => {
           Submit
         </button>
         {error && (
-          <p className="error-message" style={{ gridColumn: '1 / -1' }}>
+          <p className="error-message" style={{ gridColumn: "1 / -1" }}>
             {error}
           </p>
         )}

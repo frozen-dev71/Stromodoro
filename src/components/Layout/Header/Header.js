@@ -1,9 +1,9 @@
-import classes from './Header.module.scss';
+import classes from "./Header.module.scss";
 
-import Logo from './Logo';
-import ProfileOptions from './ProfileOptions';
+import Logo from "./Logo";
+import ProfileOptions from "./ProfileOptions";
 
-const Header = props => {
+const Header = (props) => {
   return (
     <header className={classes.header}>
       <Logo />

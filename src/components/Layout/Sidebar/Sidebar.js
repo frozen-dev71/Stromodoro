@@ -1,5 +1,5 @@
-import classes from './Sidebar.module.scss';
-import SidebarItem from './SidebarItem';
+import classes from "./Sidebar.module.scss";
+import SidebarItem from "./SidebarItem";
 
 const Sidebar = () => {
   return (

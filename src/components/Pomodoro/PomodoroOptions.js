@@ -1,9 +1,9 @@
-import classes from './PomodoroOptions.module.scss';
-import ConfirmAction from '../UserFeedback/ConfirmAction';
-import { useSelector, useDispatch } from 'react-redux/es/exports';
-import { timerActions } from '../../store/timer';
-import { activityActions } from '../../store/activity';
-import React, { useState } from 'react';
+import classes from "./PomodoroOptions.module.scss";
+import ConfirmAction from "../UserFeedback/ConfirmAction";
+import { useSelector, useDispatch } from "react-redux/es/exports";
+import { timerActions } from "../../store/timer";
+import { activityActions } from "../../store/activity";
+import React, { useState } from "react";
 
 let timer;
 const PomodoroOptions = () => {
@@ -11,13 +11,13 @@ const PomodoroOptions = () => {
     type: activeTimer,
     countdown,
     totalSeconds,
-  } = useSelector(state => state.timer);
+  } = useSelector((state) => state.timer);
 
   const dispatch = useDispatch();
   const [confirmModalIsActive, setConfirmModalIsActive] = useState(false);
 
-  const changeTimerHandler = event => {
-    const clickedListItem = event.target.closest('li');
+  const changeTimerHandler = (event) => {
+    const clickedListItem = event.target.closest("li");
     if (!clickedListItem) return;
 
     timer = clickedListItem.dataset.timer;
@@ -33,7 +33,7 @@ const PomodoroOptions = () => {
   };
   const confirmActionHandler = () => {
     setConfirmModalIsActive(false);
-    if (activeTimer === 'pomodoro') {
+    if (activeTimer === "pomodoro") {
       dispatch(
         activityActions.saveMinutesWhenPomodoroPaused({
           totalSeconds,
@@ -49,13 +49,13 @@ const PomodoroOptions = () => {
   };
 
   const defaultClass = classes.option;
-  const activeClasses = `${classes.option} ${classes['option--active']}`;
+  const activeClasses = `${classes.option} ${classes["option--active"]}`;
   const pomodoroClasses =
-    activeTimer === 'pomodoro' ? activeClasses : defaultClass;
+    activeTimer === "pomodoro" ? activeClasses : defaultClass;
   const shortBreakClasses =
-    activeTimer === 'shortBR' ? activeClasses : defaultClass;
+    activeTimer === "shortBR" ? activeClasses : defaultClass;
   const longBreakClasses =
-    activeTimer === 'longBR' ? activeClasses : defaultClass;
+    activeTimer === "longBR" ? activeClasses : defaultClass;
 
   return (
     <React.Fragment>
@@ -64,9 +64,9 @@ const PomodoroOptions = () => {
           onClose={closeConfirmationHandler}
           onConfirm={confirmActionHandler}
         >
-          {activeTimer === 'pomodoro'
+          {activeTimer === "pomodoro"
             ? "Current timer progress will be lost and your pomodoro won't be marked as completed!"
-            : 'Current timer progress will be lost!'}
+            : "Current timer progress will be lost!"}
         </ConfirmAction>
       )}
       <ul className={classes.options} onClick={changeTimerHandler}>

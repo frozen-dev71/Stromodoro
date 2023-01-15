@@ -1,35 +1,35 @@
-import classes from './TasksPieChart.module.scss';
-import { getVariableFromRoot } from '../../helpers/helpers';
-import { Fragment } from 'react';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import classes from "./TasksPieChart.module.scss";
+import { getVariableFromRoot } from "../../helpers/helpers";
+import { Fragment } from "react";
+import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const getPercentageForCategory = (category, tasksArr) => {
   const numTasks = tasksArr.length;
   const numTasksOfCategory = tasksArr.filter(
-    task => task.category === category
+    (task) => task.category === category
   ).length;
   return (numTasksOfCategory / numTasks) * 100;
 };
 const initialColors = [
-  getVariableFromRoot('--color-pie-1'),
-  getVariableFromRoot('--color-pie-2'),
-  getVariableFromRoot('--color-pie-3'),
-  getVariableFromRoot('--color-pie-4'),
-  getVariableFromRoot('--color-pie-5'),
-  getVariableFromRoot('--color-pie-6'),
+  getVariableFromRoot("--color-pie-1"),
+  getVariableFromRoot("--color-pie-2"),
+  getVariableFromRoot("--color-pie-3"),
+  getVariableFromRoot("--color-pie-4"),
+  getVariableFromRoot("--color-pie-5"),
+  getVariableFromRoot("--color-pie-6"),
 ];
 
 const TasksPieChart = () => {
-  const tasks = useSelector(state => state.tasks.tasks);
-  const workPercentage = getPercentageForCategory('Work', tasks);
+  const tasks = useSelector((state) => state.tasks.tasks);
+  const workPercentage = getPercentageForCategory("Work", tasks);
   const [colors, setColors] = useState(initialColors);
 
-  const studyPercentage = getPercentageForCategory('Study', tasks);
-  const exercisePercentage = getPercentageForCategory('Exercise', tasks);
-  const healthPercentage = getPercentageForCategory('Health', tasks);
-  const wellnessPercentage = getPercentageForCategory('Wellness', tasks);
-  const choresPercentage = getPercentageForCategory('Chores', tasks);
+  const studyPercentage = getPercentageForCategory("Study", tasks);
+  const exercisePercentage = getPercentageForCategory("Exercise", tasks);
+  const healthPercentage = getPercentageForCategory("Health", tasks);
+  const wellnessPercentage = getPercentageForCategory("Wellness", tasks);
+  const choresPercentage = getPercentageForCategory("Chores", tasks);
 
   const workDistribution = workPercentage;
   const studyDistribution = workDistribution + studyPercentage;
@@ -38,13 +38,13 @@ const TasksPieChart = () => {
   const wellnessDistribution = healthDistribution + wellnessPercentage;
   const choresDistribution = wellnessDistribution + choresPercentage;
 
-  const hoverLegendHandler = event => {
-    const hoveredEl = event.target.closest('li');
+  const hoverLegendHandler = (event) => {
+    const hoveredEl = event.target.closest("li");
     if (!hoveredEl) return;
 
     const index = hoveredEl.dataset.index;
     const copy = [...initialColors];
-    copy[index] = getVariableFromRoot('--color-accent');
+    copy[index] = getVariableFromRoot("--color-accent");
     setColors(copy);
   };
   const leaveHoverHandler = () => {
