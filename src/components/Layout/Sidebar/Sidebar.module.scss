@@ -1,0 +1,39 @@
+@import '../../../styles/abstracts.scss';
+
+.sidebar {
+  grid-column: sidebar-start / sidebar-end;
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__list {
+    list-style: none;
+    margin-top: 3.5rem;
+    width: 100%;
+
+    @include respond(phone) {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0;
+    }
+  }
+
+  @include respond(phone) {
+    position: fixed;
+    z-index: 500;
+    background-color: var(--color-white);
+    height: 8rem;
+    width: 100%;
+    padding: 0.5rem 6rem;
+    transition: all 0.5s ease;
+    left: 0;
+    bottom: 0;
+  }
+  @include respond(phone-small) {
+    padding: 0.5rem 4rem;
+  }
+  @include respond(phone-v-small) {
+    padding: 0.5rem 2rem;
+  }
+}

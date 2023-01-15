@@ -1,0 +1,48 @@
+@import '../../styles/abstracts.scss';
+
+.form {
+  display: grid;
+  padding: 1.5rem 0 3rem 0;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 4rem;
+  row-gap: 1.5rem;
+
+  @include respond(phone-v-small) {
+    grid-template-columns: 1fr;
+  }
+
+  h3 {
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    grid-column: 1 / -1;
+  }
+
+  &__group {
+    display: grid;
+    row-gap: 0.5rem;
+
+    @include respond(phone-v-small) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    label {
+      @include label-styles;
+    }
+    input {
+      width: 85%;
+      @include input-styles;
+
+      @include respond(phone-v-small) {
+        width: 100%;
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
+}

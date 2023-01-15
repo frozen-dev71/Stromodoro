@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Henny+Penny&family=Montserrat:wght@400;500;600;700&display=swap');
+@import './styles/abstracts.scss';
+/////////////////////////////////////////////
+///
+#root {
+  width: 100%;
+  height: 100vh;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+
+  @include respond(tab-land) {
+    font-size: 56.25%;
+  }
+
+  @include respond(phone) {
+    font-size: 50%;
+  }
+  @include respond(big-desktop) {
+    font-size: 75%;
+  }
+}

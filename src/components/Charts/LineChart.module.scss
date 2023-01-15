@@ -1,0 +1,102 @@
+@import '../../styles/abstracts.scss';
+
+.linechart {
+  width: 100%;
+  height: 180px;
+  border-bottom: 2px solid #aaa;
+  border-left: 2px solid #aaa;
+  display: flex;
+  position: relative;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 16%,
+    #ddd 16.66%
+  );
+
+  &__message {
+    position: absolute;
+    width: 70%;
+    font-size: 1.6rem;
+    font-weight: 600;
+    opacity: 1;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.datagroup {
+  transform: translateX(-3rem);
+  @include respond(phone) {
+    transform: translateX(-1.5rem);
+  }
+}
+
+.point {
+  border-radius: 50%;
+  position: absolute;
+  height: 11px;
+  width: 11px;
+  z-index: 1;
+  background-color: var(--color-primary);
+  //transform: translate(-50%, 50%);
+  transition: background-color 0.2s;
+
+  &::before {
+    position: absolute;
+    display: block;
+    opacity: 0;
+    content: attr(data-value);
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1;
+    top: -1.5rem;
+    left: 0;
+    transform: translateX(-1.5rem);
+    transition: all 0.3s;
+  }
+
+  &:hover {
+    background-color: var(--color-primary-shade-2);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  @include respond(phone) {
+    height: 10px;
+    width: 10px;
+  }
+}
+
+.line {
+  height: 2px;
+  position: absolute;
+  transform-origin: left bottom;
+  background-color: #aaa;
+}
+
+.label {
+  position: absolute;
+  bottom: -2rem;
+  color: #aaa;
+  font-size: 1.2rem;
+  transform: translateX(-1.5rem);
+}
+.division {
+  position: absolute;
+  left: -2.6rem;
+  color: #aaa;
+  font-size: 1.2rem;
+  transform: translateY(1rem);
+}
+
+.value {
+  position: absolute;
+  left: -2rem;
+  color: #aaa;
+  font-size: 1.2rem;
+  transform: translateX(-1.5rem);
+}

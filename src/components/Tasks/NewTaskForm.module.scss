@@ -1,0 +1,135 @@
+@import '../../styles/abstracts.scss';
+
+@mixin icon-background {
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 0.8rem;
+  background-color: var(--color-grey-2);
+
+  @include respond(phone-small) {
+    width: 3.6rem;
+    height: 3.6rem;
+  }
+}
+.new-task {
+  padding: 1.2rem 1.5rem;
+  background-color: var(--color-primary-tint);
+  filter: brightness(105%);
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: min-content 1fr minmax(3rem, min-content);
+  column-gap: 2rem;
+  align-items: center;
+  border-radius: 1rem;
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    fill: var(--color-primary-shade-2);
+
+    @include respond(phone-small) {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  &__add-btn {
+    width: 70%;
+    justify-self: center;
+    align-self: center;
+    font-size: 1.6rem;
+    font-style: inherit;
+    padding: 0.5rem 3rem;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: var(--color-primary-shade-2);
+    letter-spacing: 0.5px;
+
+    span {
+      font-size: 3rem;
+      margin-right: 1.5rem;
+    }
+
+    @include respond(phone-small) {
+      padding: 0.5rem 2rem;
+      width: 100%;
+      grid-column: 2/3;
+    }
+  }
+
+  &__submit-btn {
+    @include icon-background;
+    @include default-button-reset;
+  }
+
+  &__form-group {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 2rem;
+
+    @include respond(phone-small) {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    & > * {
+      border: 2px solid var(--color-primary-shade);
+      border-radius: 0.8rem;
+      font-size: 1.5rem;
+      font-family: inherit;
+      font-weight: 600;
+      outline: none;
+      color: var(--color-text-secondary);
+      background-color: var(--color-white);
+    }
+
+    select {
+      padding: 0.5rem 1rem 0.5rem 1.5rem;
+      width: 14rem;
+
+      @include respond(phone-small) {
+        width: 95%;
+      }
+    }
+
+    option {
+      font-weight: 600;
+    }
+
+    input {
+      padding: 0.5rem 1.5rem;
+      width: 100%;
+
+      &::placeholder {
+        color: var(--color-text-secondary);
+      }
+
+      @include respond(phone-small) {
+        padding: 0.5rem 2rem;
+        width: 95%;
+      }
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 1 / 2;
+  @include icon-background;
+
+  &--not-editing {
+    @include respond(phone-v-small) {
+      display: none;
+    }
+  }
+}

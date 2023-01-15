@@ -1,0 +1,98 @@
+@import '../../styles/abstracts.scss';
+
+.circle-container {
+  width: 32rem;
+  height: 32rem;
+  transform: rotate(-90deg);
+
+  @include respond(tab-land-small) {
+    height: 30rem;
+    width: 30rem;
+  }
+}
+
+.circle-container__background {
+  fill: none;
+  stroke: var(--color-grey-1);
+  stroke-width: 2px;
+}
+
+.circle-container__progress {
+  fill: none;
+  stroke-linecap: round;
+  stroke: var(--color-primary-tint);
+  stroke-dasharray: 100 100;
+  stroke-linecap: round;
+  stroke-width: 2px;
+  // For animations...
+  transition: stroke-dashoffset 1s;
+  will-change: transform;
+}
+
+.timer {
+  margin-top: 5rem;
+  padding: 2rem;
+  background-color: var(--color-background);
+  border-radius: 50%;
+  box-shadow: inset -1rem -1rem 3rem rgba(#000, 0.25),
+    0 0.6rem 0.4rem rgba(#000, 0.25);
+  transition: all 0.3s;
+
+  @include respond(phone) {
+    margin-top: 3rem;
+  }
+
+  &__circular {
+    height: 32rem;
+    width: 32rem;
+    position: relative;
+
+    @include respond(tab-land-small) {
+      height: 30rem;
+      width: 30rem;
+    }
+  }
+  &__center {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    color: var(--color-text-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__countdown {
+    margin-top: 3rem;
+    font-size: 6.8rem;
+    font-weight: 700;
+    line-height: 1;
+
+    @include respond(tab-land-small) {
+      font-size: 6.2rem;
+    }
+  }
+  &__btn {
+    @include default-button-reset;
+    padding: 2rem 0.5rem 1.75rem 1rem;
+    background-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    transition: all 0.3s;
+
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+  &__btn:active {
+    .timer {
+      box-shadow: inset -1rem -1rem 3rem rgba(#000, 0.25),
+        0 0.2rem 0.4rem rgba(#000, 0.3);
+    }
+  }
+}

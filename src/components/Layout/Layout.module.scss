@@ -1,0 +1,46 @@
+@import '../../styles/abstracts.scss';
+
+.container {
+  display: grid;
+  background-color: var(--color-background);
+  min-height: 100vh;
+  width: 100%;
+  grid-template-rows: [header-start] 9rem [header-end] auto;
+  grid-template-columns: [sidebar-start] 28rem [sidebar-end main-start] 1fr[main-end];
+  grid-template-areas:
+    'header header'
+    'sidebar main';
+
+  @include respond(laptop-small) {
+    grid-template-columns: [sidebar-start] 12rem [sidebar-end main-start] 1fr[main-end];
+  }
+
+  @include respond(phone) {
+    grid-template-rows: [header-start] 9rem [header-end] auto;
+    grid-template-columns: [main-start] 1fr[main-end];
+  }
+
+  @include respond(phone-small) {
+    height: 100vh;
+  }
+}
+
+.main {
+  grid-column: main-start / main-end;
+  grid-area: main;
+  background-color: var(--color-grey-1);
+
+  padding: 5rem 6rem;
+
+  @include respond(laptop) {
+    padding: 5rem 4rem;
+  }
+
+  @include respond(phone) {
+    padding: 5rem 4rem 12rem 4rem;
+  }
+
+  @include respond(phone-v-small) {
+    padding: 3rem 2rem 10rem 2rem;
+  }
+}

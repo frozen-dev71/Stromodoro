@@ -1,0 +1,49 @@
+@import '../../styles/abstracts.scss';
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+
+.modal {
+  padding: 2.5rem 3.5rem;
+
+  @include respond(phone-small) {
+    padding: 2.5rem 2.5rem;
+  }
+  position: fixed;
+  top: 20vh;
+  width: 60rem;
+  left: calc(50% - 30rem);
+  background-color: white;
+  // padding: 1rem;
+  border-radius: 1.44rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  animation: slide-down 300ms ease-out;
+
+  &__btn-close {
+    @include default-button-reset;
+    background-color: transparent;
+    font-size: 2.4rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--color-text-secondary);
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+  }
+}
+
+@include respond(phone) {
+  .modal {
+    left: 5%;
+    width: 90%;
+  }
+}

@@ -1,0 +1,153 @@
+////////////////////////////////////////////////
+// VARIABLES
+///////////////////////////////////////////////////
+//COLORS
+:root {
+	--color-primary: #e83822;
+	--color-primary-tint: #e8b4a3;
+	--color-primary-shade: #b99391;
+	--color-primary-shade-2: #a22718;
+
+	--color-accent: #b3f0c3;
+	--color-background: #fff;
+  
+	--color-grey-1: #f3f3f3;
+	--color-grey-2: #f9f8f8;
+	--color-grey-3: #c9c7cd;
+	--color-grey-4: #9696a0;
+  
+	--color-text-primary: #302422;
+	--color-text-secondary: #646060;
+	--color-text-tertiary: #5f6161;
+  
+	--color-white: #fff;
+	--color-black: #000;
+  }
+
+  //BREAKPOINTS
+
+$bp-big-desktop: 112.5em; //1800px
+$bp-laptop: 93.75em; //1500px
+$bp-laptop-small: 85em; //1360px
+$bp-tab-land: 75em; //1200px
+$bp-tab-land-small: 64em; //1024px
+$bp-tab-port-large: 60em; //960px
+$bp-tab-port: 48.125em; //960px
+$bp-phone: 37.5em; //600px
+$bp-phone-small: 31.25em; //500px
+$bp-phone-v-small: 25em; //400px
+
+//MIXINS
+@mixin respond($breakpoint) {
+	@if $breakpoint==laptop {
+	  @media only screen and (max-width: $bp-laptop) {
+		@content;
+	  }
+	}
+	@if $breakpoint==laptop-small {
+	  @media only screen and (max-width: $bp-laptop-small) {
+		@content;
+	  }
+	}
+	@if $breakpoint==tab-land {
+	  @media only screen and (max-width: $bp-tab-land) {
+		@content;
+	  }
+	}
+	@if $breakpoint==tab-land-small {
+	  @media only screen and (max-width: $bp-tab-land-small) {
+		@content;
+	  }
+	}
+	@if $breakpoint==tab-port-large {
+	  @media only screen and (max-width: $bp-tab-port-large) {
+		@content;
+	  }
+	}
+	@if $breakpoint==tab-port {
+	  @media only screen and (max-width: $bp-tab-port) {
+		@content;
+	  }
+	}
+	@if $breakpoint==phone {
+	  @media only screen and (max-width: $bp-phone) {
+		@content;
+	  }
+	}
+	@if $breakpoint==phone-small {
+	  @media only screen and (max-width: $bp-phone-small) {
+		@content;
+	  }
+	}
+	@if $breakpoint==phone-v-small {
+	  @media only screen and (max-width: $bp-phone-v-small) {
+		@content;
+	  }
+	}
+	@if $breakpoint==big-desktop {
+	  @media only screen and (min-width: $bp-big-desktop) {
+		@content;
+	  }
+	}
+  }
+
+  @mixin default-button-reset {
+	border: none;
+	outline: none;
+	cursor: pointer;
+  }
+  
+  @mixin label-styles {
+	color: var(--color-text-tertiary);
+	font-size: 1.5rem;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+  }
+  @mixin input-styles {
+	font-family: inherit;
+	background-color: var(--color-grey-1);
+	outline: none;
+	border: 2px solid var(--color-grey-4);
+  
+	padding: 0.8rem 1rem;
+	font-size: 1.8rem;
+	border-radius: 1rem;
+	font-weight: 600;
+  }
+  
+  // ANIMATIONS
+  @keyframes progressLeft {
+	100% {
+	  transform: rotate(-180deg);
+	}
+  }
+  @keyframes progressRight {
+	100% {
+	  transform: rotate(-180deg);
+	}
+  }
+  @keyframes press {
+	0% {
+	  box-shadow: inset -1rem -1rem 3rem rgba(#000, 0.25),
+		0 0.6rem 0.4rem rgba(#000, 0.25);
+	}
+	100% {
+	  box-shadow: inset -1rem -1rem 3rem rgba(#000, 0.25),
+		0 0.2rem 0.4rem rgba(#000, 0.3);
+	}
+  }
+  @keyframes slide-down {
+	from {
+	  opacity: 0;
+	  transform: translateY(-3rem);
+	}
+	to {
+	  opacity: 1;
+	  transform: translateY(0);
+	}
+  }
+  
+  .clicked {
+	animation: press 0.3s ease-in;
+  }
+  

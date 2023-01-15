@@ -1,0 +1,94 @@
+@import '../../../styles/abstracts.scss';
+
+.sidebar__item {
+  position: relative;
+  margin-bottom: 0.5rem;
+
+  @include respond(phone) {
+    width: fit-content;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 1.5rem;
+    width: 1rem;
+    transition: all 0.3s;
+    transform: scaleY(0);
+
+    @include respond(phone) {
+      height: 1rem;
+      width: 100%;
+      transform: scaleX(0);
+      top: auto;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  &--active {
+    &::before {
+      background-color: var(--color-primary);
+      transform: scaleY(1);
+
+      @include respond(phone) {
+        transform: scaleX(1);
+      }
+    }
+
+    & > a:link,
+    & > a:visited {
+      color: var(--color-primary);
+      svg {
+        fill: var(--color-primary);
+      }
+    }
+  }
+
+  &:hover {
+    &::before {
+      background-color: var(--color-primary);
+      transform: scaleY(1);
+    }
+  }
+}
+
+.sidebar__link {
+  &,
+  &:link,
+  &:visited {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 2.2rem;
+    color: var(--color-text-tertiary);
+    padding: 1.4rem 4rem;
+    transition: all 0.3s;
+
+    @include respond(phone) {
+      width: fit-content;
+      padding: 1.8rem 2rem;
+    }
+
+    span {
+      @include respond(laptop-small) {
+        display: none;
+      }
+    }
+
+    svg {
+      width: 3.5rem;
+      height: 3.5rem;
+      fill: var(--color-text-tertiary);
+      margin-right: 1.5rem;
+
+      @include respond(laptop-small) {
+        margin-right: 0;
+      }
+    }
+  }
+}

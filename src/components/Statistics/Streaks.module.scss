@@ -1,0 +1,93 @@
+@import '../../styles/abstracts.scss';
+
+.streaks {
+  width: 100%;
+  // height: 20rem;
+  grid-column: 1 / 2;
+
+  @include respond(tab-port-large) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  @include respond(tab-port) {
+    grid-column: 1 / -1;
+    grid-row: 3 / 4;
+  }
+
+  h3 {
+    margin-bottom: 0.8rem;
+  }
+
+  h4 {
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  &__chart {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  &__grid {
+    padding: 1rem 0 2rem 0;
+    display: grid;
+    height: max-content;
+    grid-template-columns: repeat(7, 2rem);
+    gap: 1rem;
+    margin-right: 0;
+    position: relative;
+  }
+}
+
+.streak {
+  background-color: var(--color-grey-3);
+  width: 100%;
+  border-radius: 0.4rem;
+  opacity: 1;
+  transition: opacity 0.3s;
+  width: 2rem;
+  height: 2rem;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &--checked {
+    background-color: var(--color-primary);
+  }
+  &--omitted {
+    background-color: var(--color-white);
+  }
+}
+.day {
+  height: 0.8rem;
+  line-height: 1;
+  font-size: 1.1rem;
+  font-weight: 600;
+  justify-self: center;
+}
+.arrow {
+  @include default-button-reset;
+  background-color: transparent;
+  position: absolute;
+  top: -1.4rem;
+  transform: translateY(-50%);
+
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    fill: var(--color-text-secondary);
+  }
+
+  &--left {
+    left: -2.5rem;
+  }
+  &--right {
+    right: -2.5rem;
+  }
+}

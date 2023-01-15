@@ -1,0 +1,71 @@
+@import '../../styles/abstracts.scss';
+
+.manual {
+  grid-column: 2 / 3;
+  height: fit-content;
+
+  @include respond(tab-port-large) {
+    grid-column: 1 / 2;
+    width: 90%;
+    justify-self: center;
+  }
+  @include respond(tab-port) {
+    width: 100%;
+  }
+
+  h3 {
+    font-size: 2.2rem;
+  }
+}
+
+.form {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 13rem;
+  align-items: start;
+  column-gap: 1rem;
+  row-gap: 1.5rem;
+
+  @include respond(phone-small) {
+    grid-template-columns: 1fr;
+  }
+
+  &__group {
+    display: grid;
+    row-gap: 0.5rem;
+
+    @include respond(phone-small) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    label {
+      @include label-styles;
+
+      @include respond(tab-land-small) {
+        font-size: 1.2rem;
+      }
+      @include respond(phone-small) {
+        font-size: 1.4rem;
+        align-self: center;
+      }
+    }
+    input {
+      width: 90%;
+      @include input-styles;
+
+      @include respond(phone-small) {
+        width: 100%;
+      }
+    }
+  }
+  button {
+    padding: 1.2rem 1.5rem;
+    font-size: 1.6rem;
+    align-self: end;
+
+    @include respond(phone-small) {
+      justify-self: center;
+      padding: 1.25rem 3.5rem;
+    }
+  }
+}

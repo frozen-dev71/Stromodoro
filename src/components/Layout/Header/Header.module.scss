@@ -1,0 +1,119 @@
+@import "../../../styles/abstracts.scss";
+
+.header {
+  grid-row: header-start / header-end;
+  grid-column: sidebar-start/ tasks-end;
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+
+  @include respond(phone-small) {
+    padding: 0 2.2rem;
+  }
+
+  &__profile-options {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    height: 100%;
+  }
+
+  &__link {
+    &,
+    &:link,
+    &:visited {
+      position: relative;
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--color-text-primary);
+      padding: 0 1.8rem;
+      height: 100%;
+      transition: all 0.3s;
+
+      @include respond(tab-port) {
+        padding: 0 1.5rem;
+      }
+      @include respond(phone-small) {
+        padding: 0 1rem;
+      }
+
+      svg {
+        width: 3rem;
+        height: 3rem;
+        fill: var(--color-text-secondary);
+        margin-right: 0.8rem;
+
+        @include respond(tab-port) {
+          margin-right: 0;
+        }
+        @include respond(tab-port) {
+          width: 2.8rem;
+          height: 2.8rem;
+        }
+      }
+    }
+    &:hover,
+    &:active {
+      background-color: var(--color-grey-2);
+    }
+    &--label {
+      @include respond(tab-port) {
+        display: none;
+      }
+    }
+  }
+  &__option {
+    height: 100%;
+  }
+  &__new-notifications {
+    position: absolute;
+    top: 2.5rem;
+    left: 3rem;
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    @include respond(phone-small) {
+      left: 2.5rem;
+    }
+  }
+  &__profile-label {
+    display: flex;
+    align-items: center;
+    margin: 0 2rem 0 1.5rem;
+
+    @include respond(tab-port) {
+      margin: 0 1rem 0 1.5rem;
+    }
+
+    @include respond(phone-small) {
+      display: none;
+    }
+  }
+  &__profile-avatar {
+    height: 5.5rem;
+    margin-right: 1rem;
+
+    @include respond(tab-port) {
+      margin-right: 0;
+    }
+  }
+  &__profile-name {
+    display: inline-block;
+    font-weight: 500;
+
+    @include respond(tab-port) {
+      display: none;
+    }
+  }
+}

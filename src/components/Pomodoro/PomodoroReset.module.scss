@@ -1,0 +1,24 @@
+@import '../../styles/abstracts.scss';
+
+.reset {
+  @include default-button-reset;
+  background-color: var(--color-white);
+  box-shadow: 0 0.2rem 1rem rgba(#000, 0.1);
+  border-radius: 2rem;
+  margin-top: 5rem;
+  padding: 1.2rem 2rem;
+  font-family: inherit;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s;
+  transform: scale(1);
+
+  &:hover {
+    background-color: var(--color-grey-2);
+    color: var(--color-primary-shade-2);
+  }
+}

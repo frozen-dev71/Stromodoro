@@ -1,0 +1,107 @@
+@import '../../styles/abstracts.scss';
+
+.tasks {
+  align-self: start;
+  transition: all 0.3s;
+  position: relative;
+
+  @include respond(tab-port-large) {
+    align-self: center;
+    order: 2;
+  }
+  @include respond(phone) {
+  }
+
+  ul {
+    margin-top: 1.5rem;
+    display: grid;
+    row-gap: 1rem;
+
+    &::after {
+      content: '';
+      display: block;
+      margin-top: 1rem;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-grey-1);
+    }
+  }
+  p {
+    font-weight: 600;
+    justify-self: center;
+  }
+  &__btn {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+
+    &--delete {
+      position: absolute;
+      right: 18rem;
+      top: 2rem;
+      font-family: inherit;
+      padding: 0.81rem 2.2rem;
+
+      @include respond(phone) {
+        right: 16rem;
+        padding: 0.55rem 1.15rem;
+      }
+      @include respond(phone-v-small) {
+        right: 12.5rem;
+        padding: 0.4rem 1rem;
+      }
+    }
+  }
+  &__btn-text {
+    &--regular {
+      @include respond(phone-v-small) {
+        display: none;
+      }
+    }
+    &--small {
+      display: none;
+
+      @include respond(phone-v-small) {
+        display: block;
+
+        svg {
+          width: 1.8rem;
+          height: 1.8rem;
+          fill: var(--color-grey-4);
+        }
+      }
+    }
+  }
+}
+
+.info {
+  @include default-button-reset;
+  border: 2px solid var(--color-grey-4);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-family: inherit;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 50%;
+  color: var(--color-grey-4);
+
+  &__message {
+    position: absolute;
+    top: 5rem;
+    right: 2rem;
+    font-size: 1.4rem;
+    background-color: var(--color-grey-2);
+    color: var(--color-text-secondary);
+    box-shadow: 1rem 1rem 3rem rgba(#000, 0.2);
+    padding: 2rem;
+    border-radius: 0.5rem;
+
+    @include respond(phone) {
+      max-width: 20rem;
+    }
+  }
+}
