@@ -8,12 +8,15 @@ import {
 } from 'react-router-dom';
 import PomodoroPage from './pages/PomodoroPage';
 import DashboardPage from './pages/DashboardPage';
+import StatisticsPage from './pages/StatisticsPage';
 import TasksPage from './pages/TasksPage';
 import { timerActions } from './store/timer';
 import { tasksActions } from './store/tasks';
 import { activityActions } from './store/activity';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useEffect, useState } from 'react';
+import useUnload from './hooks/useUnload';
+import usePageVisibilty from './hooks/usePageVisibility';
 import { dateIsYesterday, dateIsToday, getData } from './helpers/helpers';
 import { calendarActions } from './store/calendar';
 import audioFile from './assets/completed.mp3';
