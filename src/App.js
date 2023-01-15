@@ -16,7 +16,12 @@ import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { useEffect, useState } from 'react';
 import { dateIsYesterday, dateIsToday, getData } from './helpers/helpers';
 import { calendarActions } from './store/calendar';
+import audioFile from './assets/completed.mp3';
 
+
+let secondsOutsidePomodoro = 0;
+let audioPlayedOutside = false;
+const audio = new Audio(audioFile);
 
 function App() {
   return (
