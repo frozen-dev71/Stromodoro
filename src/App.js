@@ -24,6 +24,16 @@ let audioPlayedOutside = false;
 const audio = new Audio(audioFile);
 
 function App() {
+  const dispatch = useDispatch();
+  const timerIsActive = useSelector(state => state.timer.isActive);
+  const location = useLocation();
+  const pomodoroWasCompleted = useSelector(state => state.timer.wasCompleted);
+  const pomodoroMinutes = useSelector(state => state.timer.config.pomodoro);
+  const countdown = useSelector(state => state.timer.countdown);
+  const [pageVisibility, setPageVisibility] = useState(
+    document.visibilityState
+  );
+
   return (
     <Layout>
     <Routes>
