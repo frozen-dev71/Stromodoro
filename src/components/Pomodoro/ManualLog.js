@@ -1,5 +1,5 @@
 import Card from "../UI/Card";
-import ConfirmAction from "../UserFeedback/ConfirmAction";
+import ConfirmAction from "../UserFeedBack/ConfirmAction";
 import classes from "./ManualLog.module.scss";
 import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";

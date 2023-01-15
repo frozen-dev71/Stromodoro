@@ -1,5 +1,5 @@
 import classes from "./PomodoroOptions.module.scss";
-import ConfirmAction from "../UserFeedback/ConfirmAction";
+import ConfirmAction from "../UserFeedBack/ConfirmAction";
 import { useSelector, useDispatch } from "react-redux/es/exports";
 import { timerActions } from "../../store/timer";
 import { activityActions } from "../../store/activity";

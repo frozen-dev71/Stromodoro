@@ -4,7 +4,7 @@ import { taskCategories as categories } from '../../helpers/config';
 import { useDispatch, useSelector } from 'react-redux';
 import { tasksActions } from '../../store/tasks';
 import { useState } from 'react';
-import ConfirmAction from '../UserFeedback/ConfirmAction';
+import ConfirmAction from '../UserFeedBack/ConfirmAction';
 import { activityActions } from '../../store/activity';
 import { dateIsToday } from '../../helpers/helpers';
 
