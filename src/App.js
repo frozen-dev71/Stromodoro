@@ -34,6 +34,39 @@ function App() {
     document.visibilityState
   );
 
+  const match = matchPath(
+    {
+      path: '/pomodoro',
+      exact: true,
+      strict: false,
+    },
+    location.pathname
+  );
+
+  useEffect(() => {
+    if (localStorage.getItem('timer')) {
+      dispatch(timerActions.getTimerData());
+    }
+    if (localStorage.getItem('tasks')) {
+      dispatch(tasksActions.getTasksData());
+    }
+    if (localStorage.getItem('calendar')) {
+      dispatch(calendarActions.getCalendarData());
+    }
+    if (localStorage.getItem('activity')) {
+      const storedActivity = getData('activity');
+      if (dateIsToday(storedActivity.date)) {
+        dispatch(activityActions.getActivityData());
+      } else {
+        dispatch(calendarActions.insertActivityData(storedActivity));
+        dispatch(timerActions.changeTimer('pomodoro'));
+        if (!dateIsYesterday(storedActivity.date))
+          // insert null data for yesterday so the statistics will update with the correct data
+          dispatch(calendarActions.insertYesterdayData());
+      }
+    }
+  }, [dispatch]);
+
   return (
     <Layout>
     <Routes>
