@@ -90,3 +90,64 @@ $bp-phone-v-small: 25em; //400px
 	  }
 	}
   }
+
+  @mixin default-button-reset {
+	border: none;
+	outline: none;
+	cursor: pointer;
+  }
+  
+  @mixin label-styles {
+	color: var(--color-text-tertiary);
+	font-size: 1.5rem;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+  }
+  @mixin input-styles {
+	font-family: inherit;
+	background-color: var(--color-grey-1);
+	outline: none;
+	border: 2px solid var(--color-grey-4);
+  
+	padding: 0.8rem 1rem;
+	font-size: 1.8rem;
+	border-radius: 1rem;
+	font-weight: 600;
+  }
+  
+  // ANIMATIONS
+  @keyframes progressLeft {
+	100% {
+	  transform: rotate(-180deg);
+	}
+  }
+  @keyframes progressRight {
+	100% {
+	  transform: rotate(-180deg);
+	}
+  }
+  @keyframes press {
+	0% {
+	  box-shadow: inset -1rem -1rem 3rem rgba(#000, 0.25),
+		0 0.6rem 0.4rem rgba(#000, 0.25);
+	}
+	100% {
+	  box-shadow: inset -1rem -1rem 3rem rgba(#000, 0.25),
+		0 0.2rem 0.4rem rgba(#000, 0.3);
+	}
+  }
+  @keyframes slide-down {
+	from {
+	  opacity: 0;
+	  transform: translateY(-3rem);
+	}
+	to {
+	  opacity: 1;
+	  transform: translateY(0);
+	}
+  }
+  
+  .clicked {
+	animation: press 0.3s ease-in;
+  }
+  
